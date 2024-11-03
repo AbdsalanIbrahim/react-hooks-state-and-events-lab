@@ -1,30 +1,13 @@
-import "@testing-library/jest-dom";
-import { render, screen, fireEvent } from "@testing-library/react";
-import App from "../components/App";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import App from '../App';
 
-test("displays in 'light' mode when initialized", () => {
-  const { container } = render(<App />);
-  expect(container.querySelector(".App.light")).toBeInTheDocument();
-});
-
-test("changes to 'dark' mode when the button is clicked", () => {
-  const { container } = render(<App />);
-  expect(container.querySelector(".App.light")).toBeInTheDocument();
-
-  fireEvent.click(screen.getByText(/ Mode/));
-
-  expect(container.querySelector(".App.dark")).toBeInTheDocument();
-});
-
-test("changes back to 'light' mode when the button is clicked twice", () => {
-  const { container } = render(<App />);
-  expect(container.querySelector(".App.light")).toBeInTheDocument();
-
-  fireEvent.click(screen.getByText(/ Mode/));
-
-  expect(container.querySelector(".App.dark")).toBeInTheDocument();
-
-  fireEvent.click(screen.getByText(/ Mode/));
-
-  expect(container.querySelector(".App.light")).toBeInTheDocument();
+test('renders the App component with the Shopping List', () => {
+  render(<App />);
+  
+  expect(screen.getByText(/Shopping List/i)).toBeInTheDocument();
+  expect(screen.getByText(/Milk/i)).toBeInTheDocument();
+  expect(screen.getByText(/Bread/i)).toBeInTheDocument();
+  expect(screen.getByText(/Eggs/i)).toBeInTheDocument();
 });

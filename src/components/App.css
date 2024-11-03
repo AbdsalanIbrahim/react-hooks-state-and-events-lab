@@ -1,0 +1,20 @@
+.App {
+    padding: 20px;
+    transition: background-color 0.5s;
+  }
+  
+  .App.light {
+    background-color: white;
+    color: black;
+  }
+  
+  .App.dark {
+    background-color: black;
+    color: white;
+  }
+  
+  .in-cart {
+    text-decoration: underline;
+    color: green;
+  }
+  
