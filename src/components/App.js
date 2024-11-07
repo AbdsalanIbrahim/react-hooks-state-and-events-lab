@@ -1,24 +1,25 @@
-import React from 'react';
-import Item from './components/Item';
-
-const items = [
-  { name: 'Milk', category: 'Dairy' },
-  { name: 'Bread', category: 'Bakery' },
-  { name: 'Eggs', category: 'Dairy' },
-];
+import React, { useState } from "react";
+import ShoppingList from "./ShoppingList";
+import itemData from "../data/items";
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const appClass = isDarkMode ? "App dark" : "App light";
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <div className="App">
-      <h1>Shopping List</h1>
-      <ul className="Items">
-        {items.map((item, index) => (
-          <Item key={index} name={item.name} category={item.category} />
-        ))}
-      </ul>
+    <div className={appClass}>
+      <header>
+        <h2>Shopster</h2>
+        <button onClick={toggleDarkMode}>Dark Mode</button>
+      </header>
+      <ShoppingList items={itemData} />
     </div>
   );
 }
 
 export default App;
-
